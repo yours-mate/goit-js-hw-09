@@ -16,3 +16,19 @@ img {
   display: block;
   max-width: 100%;
 }
+
+input[type='text'] {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  align-content: center;
+}
+
+button[data-start] {
+  display: flex;
+  align-content: center;
+}
+
+.field {
+  display: flex;
+}

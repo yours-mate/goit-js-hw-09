@@ -10,41 +10,52 @@ refs = {
   startBtn: document.querySelector('button[data-start]'),
 };
 
-refs.startBtn.addEventListener('click', timerStart);
+let resultInSeconds = 0;
+let result = {};
 
-function timerStart() {
-  //   if (!options.onClose()) {
-  //     return;
-  //   }
+refs.startBtn.disabled = true;
+
+// Updates timer on the screen
+function updateTimer(result) {
   refs.days.textContent = result.days;
   refs.hours.textContent = result.hours;
   refs.minutes.textContent = result.minutes;
   refs.seconds.textContent = result.seconds;
 }
 
-let resultInSeconds = 0;
-let result = {};
+refs.startBtn.addEventListener('click', timerStart);
 
+// Starts the timer
+function timerStart() {
+  refs.startBtn.disabled = true;
+  setInterval(() => {
+    const currentTime = Date.now();
+    resultInSeconds = calendar.selectedDates[0].getTime() - currentTime;
+    if (resultInSeconds <= 0) {
+      return;
+    }
+    result = convertMs(resultInSeconds);
+    updateTimer(result);
+  }, 1000);
+}
+
+// Options for flatpckr initialization
 const options = {
   enableTime: true,
   time_24hr: true,
   defaultDate: new Date(),
   minuteIncrement: 1,
   onClose(selectedDates) {
-    if (selectedDates[0].getTime() <= options.defaultDate.getTime()) {
+    if (selectedDates[0].getTime() <= options.defaultDate) {
       return window.alert('Please choose a date in the future');
     }
-    resultInSeconds =
-      selectedDates[0].getTime() - options.defaultDate.getTime();
-    result = convertMs(resultInSeconds);
-    console.log(result);
+    refs.startBtn.disabled = false;
   },
 };
 
-flatpickr(refs.calendarInput, options);
+const calendar = flatpickr(refs.calendarInput, options);
 
-console.log(options.defaultDate);
-
+// Converts ms into object with days, hours, minutes and seconds
 function convertMs(ms) {
   const second = 1000;
   const minute = second * 60;
@@ -61,6 +72,7 @@ function convertMs(ms) {
   return { days, hours, minutes, seconds };
 }
 
+// Adds '0' before single number
 function addLeadingZero(value) {
   return String(value).padStart(2, '0');
 }
