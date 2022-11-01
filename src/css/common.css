@@ -19,16 +19,42 @@ img {
 
 input[type='text'] {
   display: flex;
-  text-align: center;
-  align-items: center;
   align-content: center;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 button[data-start] {
   display: flex;
-  align-content: center;
+  border: none;
+  height: 44px;
+  width: 200px;
+  border-radius: 10px;
+
+  justify-content: center;
+  align-items: center;
+  margin: 10px auto 50px;
+  padding: 0;
+  font-size: 16px;
+  font-weight: 700;
+
+  background-color: blanchedalmond;
+}
+
+.timer {
+  display: flex;
+  justify-content: center;
 }
 
 .field {
   display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-right: 10px;
+  background-color: blanchedalmond;
+  padding: 10px;
+  border-radius: 10px;
+  font-family: sans-serif;
+  font-size: 30px;
+  color: cornflowerblue;
 }
