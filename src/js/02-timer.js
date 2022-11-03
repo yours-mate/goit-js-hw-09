@@ -2,7 +2,7 @@ import flatpickr from 'flatpickr';
 import 'flatpickr/dist/flatpickr.min.css';
 import Notiflix from 'notiflix';
 
-refs = {
+const refs = {
   calendarInput: document.querySelector('#datetime-picker'),
   days: document.querySelector('span[data-days]'),
   hours: document.querySelector('span[data-hours]'),

@@ -1,6 +1,6 @@
 import Notiflix from 'notiflix';
 
-refs = {
+const refs = {
   delay: document.querySelector('[name="delay"]'),
   step: document.querySelector('[name="step"]'),
   amount: document.querySelector('[name="amount"]'),
