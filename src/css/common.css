@@ -24,7 +24,8 @@ input[type='text'] {
   margin-right: auto;
 }
 
-button[data-start] {
+button[data-start],
+button[data-stop] {
   display: flex;
   border: none;
   height: 44px;
