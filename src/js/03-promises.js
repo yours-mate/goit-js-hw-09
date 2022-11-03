@@ -13,7 +13,7 @@ function onSubmitForm(evt) {
   evt.preventDefault();
   const step = Number(refs.step.value);
   const delayInit = Number(refs.delay.value);
-  for (i = 0; i < refs.amount.value; i += 1) {
+  for (let i = 0; i < refs.amount.value; i += 1) {
     order += 1;
     createPromise(order, delayInit + i * step)
       .then(({ position, delay }) => {
