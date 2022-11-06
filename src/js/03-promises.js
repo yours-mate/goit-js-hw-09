@@ -5,6 +5,7 @@ const refs = {
   step: document.querySelector('[name="step"]'),
   amount: document.querySelector('[name="amount"]'),
   submitFormBtn: document.querySelector('[type="submit"]'),
+  form: document.querySelector('.form'),
 };
 
 let order = 0;
@@ -27,9 +28,10 @@ function onSubmitForm(evt) {
         );
       });
   }
+  evt.currentTarget.reset();
 }
 
-refs.submitFormBtn.addEventListener('click', onSubmitForm);
+refs.form.addEventListener('submit', onSubmitForm);
 
 function createPromise(position, delay) {
   return new Promise((resolve, reject) => {
